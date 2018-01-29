@@ -1,0 +1,30 @@
+{
+	"methods": [{
+		"name": "setStatus",
+		"operationType": null,
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "status",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "updateTransactionData",
+		"operationType": null,
+		"parameters": [{
+			"name": "data",
+			"type": "java.lang.String"
+		}, {
+			"name": "id",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "status",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "UpdateTransactions.json"
+}

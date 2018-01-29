@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xsi:schemaLocation="http://schema.cloudfoundry.org/spring http://schema.cloudfoundry.org/spring/cloudfoundry-spring-0.8.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:cloud="http://schema.cloudfoundry.org/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bean class="com.wavemaker.runtime.service.TypeManager" parent="typeManagerBase" scope="singleton" id="typeManager">
+        <property name="types">
+            <map merge="true">
+                <entry key="UpdateTransactions">
+                    <list/>
+                </entry>
+                <entry key="getConfigurations">
+                    <list/>
+                </entry>
+                <entry key="tyro">
+                    <list>
+                        <value>com.tyro.data.Configurations</value>
+                        <value>com.tyro.data.HealthpointClaimItems</value>
+                        <value>com.tyro.data.Transaction</value>
+                        <value>com.tyro.data.TransactionData</value>
+                        <value>com.tyro.data.output.GetAllConfigurationsRtnType</value>
+                        <value>com.tyro.data.output.GetNewTransactionRtnType</value>
+                    </list>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>

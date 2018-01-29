@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="getConfigurations" class="com.medicalwizard.tyro.GetConfigurations" CRUDService="false" type="JavaService" springFile="getConfigurations.spring.xml">
+    <operation name="getAllConfigurations">
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
+    <operation name="updateConfigs">
+        <parameter name="data" typeRef="java.lang.String" isList="false"/>
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
+    <dataobjects/>
+</service>

@@ -1,0 +1,18 @@
+{
+	"methods": [{
+		"name": "getAllConfigurations",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "updateConfigs",
+		"operationType": null,
+		"parameters": [{
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "getConfigurations.json"
+}

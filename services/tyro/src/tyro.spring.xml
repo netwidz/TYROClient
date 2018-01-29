@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+
+<!-- Generated 10/20/2014 11:37:47
+
+Configuration for 'tyro' database service
+
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+    <bean 
+        id="tyro"
+        class="com.tyro.Tyro"
+        scope="singleton"
+        lazy-init="true">
+        <property name="dataServiceManager">
+            <ref bean="tyroDataService"/>
+        </property>
+        <property name="taskManager">
+            <ref bean="tyroTaskMgr"/>
+        </property>
+    </bean>
+
+
+    <bean 
+        class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:tyro.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean 
+        id="tyroDataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+        lazy-init="true">
+        <property name="driverClassName" value="${tyro.driverClassName}"/>
+        <property name="url" value="${tyro.connectionUrl}"/>
+        <property name="username" value="${tyro.username}"/>
+        <property name="password" value="${tyro.password}"/>
+    </bean>
+
+
+    <bean 
+        id="tyroTxMgr" 
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+        lazy-init="true">
+        <property name="sessionFactory">
+            <ref bean="tyroSessionFactory"/>
+        </property>
+    </bean>
+
+
+    <bean 
+        id="tyroHibernateTemplate"
+        class="org.springframework.orm.hibernate3.HibernateTemplate"
+        lazy-init="true">
+        <property name="sessionFactory"> 
+            <ref bean="tyroSessionFactory"/>
+        </property>
+    </bean>  
+
+
+    <bean 
+        id="tyroSessionFactory" 
+        class="com.wavemaker.runtime.data.spring.ConfigurationAndSessionFactoryBean"
+        lazy-init="true">
+
+        <!-- A unique name for this SessionFactory's configuration -->
+        <property name="name" value="tyro"/>
+        <property name="dataSource" ref="tyroDataSource"/>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${tyro.dialect}</prop>
+                <prop key="hibernate.transaction.factory_class">
+                    org.hibernate.transaction.JDBCTransactionFactory
+                </prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                
+            </props> 
+        </property>
+
+        <property name="mappingResources">
+            <list>
+
+<value>com/tyro/data/TransactionData.hbm.xml</value>
+<value>com/tyro/data/Configurations.hbm.xml</value>
+<value>com/tyro/data/Transaction.hbm.xml</value>
+<value>com/tyro/data/HealthpointClaimItems.hbm.xml</value>
+
+<value>com/tyro/data/TransactionData.ql.xml</value>
+<value>com/tyro/data/app-queries.ql.xml</value>
+
+            </list>
+        </property>
+
+    </bean>
+
+
+    <!-- the data service bean instance is injected into the service bean -->
+    <bean 
+        id="tyroDataService" 
+        class="com.wavemaker.runtime.data.spring.SpringDataServiceManager"
+        lazy-init="true">
+        <constructor-arg>
+            <!-- the value of the "name" property of the SessionFactory -->
+            <value>tyro</value>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="tyroHibernateTemplate"/>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="tyroTxMgr"/>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="tyroTaskMgr"/>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="useIndividualCRUDOperations" value="false"/>
+                <entry key="refreshEntities" value=""/> 
+            </map>
+        </constructor-arg>
+    </bean>
+
+
+    <bean 
+        id="tyroTaskMgr"
+        class="com.wavemaker.runtime.data.DefaultTaskManager"
+        lazy-init="true"/>
+
+    <bean class="com.wavemaker.runtime.service.events.EventWire"
+        lazy-init="false">
+        <property name="serviceWire" ref="tyroServiceWire"/>
+        <property name="eventListener">
+            <bean class="com.wavemaker.runtime.data.DataServiceEventListener"/>
+        </property>
+    </bean>
+
+    <bean id="tyroServiceWire"
+        class="com.wavemaker.runtime.service.reflect.ReflectServiceWire"
+        lazy-init="false" scope="singleton">
+        <property name="serviceId" value="tyro"/>
+        <property name="serviceType" ref="DataService"/>
+    </bean>
+
+</beans>

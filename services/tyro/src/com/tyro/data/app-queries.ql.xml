@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <meta attribute="@design.default-queries"/>
+    <query name="getAllConfigurations">
+        SELECT key as key, value as value from  Configurations
+    </query>
+    <query name="updateTransactionResult">
+        <query-param name="status" type="java.lang.String"/>
+        <query-param name="id" type="java.lang.Integer"/>
+        <query-param name="tyroStatus" type="java.lang.String"/>
+        <query-param name="transactionDateTime" type="java.lang.String"/>
+        <query-param name="transactionDataId" type="java.lang.Integer"/>
+        <query-param name="isNew" type="java.lang.String"/>
+        UPDATE Transaction SET status =:status, tyroStatus=:tyroStatus, transactionDateTime=:transactionDateTime, transactionDataId=:transactionDataId, isNew=:isNew
+        where id=:id
+    </query>
+    <query name="updateTransactionStatus">
+        <query-param name="status" type="java.lang.String"/>
+        <query-param name="id" type="java.lang.Integer"/>
+        UPDATE Transaction SET status =:status where id=:id
+    </query>
+    <query name="updateConfigurations">
+        <query-param name="value" type="java.lang.String"/>
+        <query-param name="key" type="java.lang.String"/>
+        UPDATE Configurations SET value = :value where key = :key
+    </query>
+    <query name="getNewTransaction">
+        SELECT id as id, amount as amount, isHealthPointClaim as isHealthPointClaim, integratedReceipt as integratedReceipt, cashout as cashout, healthPointClaimId as healthPointClaimId from  Transaction WHERE isNew=1
+    </query>
+    
+    
+    
+</hibernate-mapping>

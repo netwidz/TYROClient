@@ -1,0 +1,75 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.tyro.data.TransactionData" table="TransactionData" catalog="tyro" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="result" type="string">
+            <column name="result"/>
+        </property>
+        <property name="cardType" type="string">
+            <column name="cardType"/>
+        </property>
+        <property name="transactionReference" type="string">
+            <column name="transactionReference"/>
+        </property>
+        <property name="authorisationCode" type="string">
+            <column name="authorisationCode"/>
+        </property>
+        <property name="issuerActionCode" type="string">
+            <column name="issuerActionCode"/>
+        </property>
+        <property name="elidedPan" type="string">
+            <column name="elidedPan"/>
+        </property>
+        <property name="rrn" type="string">
+            <column name="rrn"/>
+        </property>
+        <property name="tipAmount" type="string">
+            <column name="tipAmount"/>
+        </property>
+        <property name="tipCompletionReference" type="string">
+            <column name="tipCompletionReference"/>
+        </property>
+        <property name="tabCompletionReference" type="string">
+            <column name="tabCompletionReference"/>
+        </property>
+        <property name="customerReceipt" type="string">
+            <column name="customerReceipt"/>
+        </property>
+     <property name="healthpointRefTag" type="string">
+            <column name="healthpointRefTag"/>
+        </property>
+        <property name="healthpointTotalBenefitAmount" type="string">
+            <column name="healthpointTotalBenefitAmount"/>
+        </property>
+        <property name="healthpointSettlementDateTime" type="string">
+            <column name="healthpointSettlementDateTime"/>
+        </property>
+        <property name="healthpointTerminalDateTime" type="string">
+            <column name="healthpointTerminalDateTime"/>
+        </property>
+        <property name="healthpointMemberNumber" type="string">
+            <column name="healthpointMemberNumber"/>
+        </property>
+        <property name="healthpointProviderId" type="string">
+            <column name="healthpointProviderId"/>
+        </property>
+        <property name="healthpointServiceType" type="string">
+            <column name="healthpointServiceType"/>
+        </property>
+        <property name="healthpointGapAmount" type="string">
+            <column name="healthpointGapAmount"/>
+        </property>
+        <property name="healthpointPhfResponseCode" type="string">
+            <column name="healthpointPhfResponseCode"/>
+        </property>
+        <property name="healthpointPhfResponseCodeDescription" type="string">
+            <column name="healthpointPhfResponseCodeDescription"/>
+        </property>
+        <property name="healthpointClaimItem" type="integer">
+            <column name="healthpointClaimItem"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="tyro" class="com.tyro.Tyro" CRUDService="true" type="DataService" springFile="tyro.spring.xml">
+    <operation operationType="hqlquery" name="getAllConfigurations">
+        <return typeRef="com.tyro.data.output.GetAllConfigurationsRtnType" isList="true"/>
+    </operation>
+     <operation operationType="hqlquery" name="getNewTransaction">
+        <return typeRef="com.tyro.data.output.GetNewTransactionRtnType" isList="true"/>
+    </operation>
+ 
+    <operation operationType="hqlquery" name="getTransactionDataById">
+        <parameter name="id" typeRef="java.lang.Integer" isList="false"/>
+        <return typeRef="com.tyro.data.TransactionData" isList="false"/>
+    </operation>
+    <operation operationType="hqlquery" name="updateConfigurations">
+        <parameter name="value" typeRef="java.lang.String" isList="false"/>
+        <parameter name="key" typeRef="java.lang.String" isList="false"/>
+        <return typeRef="java.lang.Integer" isList="false"/>
+    </operation>
+    <operation operationType="hqlquery" name="updateTransactionResult">
+        <parameter name="status" typeRef="java.lang.String" isList="false"/>
+        <parameter name="id" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="tyroStatus" typeRef="java.lang.String" isList="false"/>
+        <parameter name="transactionDateTime" typeRef="java.lang.String" isList="false"/>
+        <parameter name="transactionDataId" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="isNew" typeRef="java.lang.String" isList="false"/>
+        <return typeRef="java.lang.Integer" isList="false"/>
+    </operation>
+    <operation operationType="hqlquery" name="updateTransactionStatus">
+        <parameter name="status" typeRef="java.lang.String" isList="false"/>
+        <parameter name="id" typeRef="java.lang.Integer" isList="false"/>
+        <return typeRef="java.lang.Integer" isList="false"/>
+    </operation>
+    <dataobjects>
+        <dataobject javaType="com.tyro.data.Configurations" supportsQuickData="true">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element name="key" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="value" typeRef="java.lang.String" isList="false" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.tyro.data.HealthpointClaimItems" supportsQuickData="true">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element name="healthPointClaimId" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="claimAmount" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="rebateAmount" typeRef="java.lang.String" isList="false" allowNull="false"/>
+        </dataobject>
+        <dataobject javaType="com.tyro.data.Transaction" supportsQuickData="true">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element name="transactionId" typeRef="java.lang.Integer" isList="false" allowNull="true"/>
+            <element name="amount" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="isNew" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="isHealthPointClaim" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="integratedReceipt" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="cashout" typeRef="java.lang.Integer" isList="false" allowNull="true"/>
+            <element name="transactionDataId" typeRef="java.lang.Integer" isList="false" allowNull="true"/>
+            <element name="healthPointClaimId" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="user" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="transactionDateTime" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="status" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="tyroStatus" typeRef="java.lang.String" isList="false" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.tyro.data.TransactionData" supportsQuickData="true">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element name="result" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="cardType" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="transactionReference" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="authorisationCode" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="issuerActionCode" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="elidedPan" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="rrn" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="tipAmount" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="tipCompletionReference" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="tabCompletionReference" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="customerReceipt" typeRef="java.lang.String" isList="false" allowNull="true"/>
+           
+            <element name="healthpointTotalBenefitAmount" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="healthpointSettlementDateTime" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="healthpointTerminalDateTime" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="healthpointMemberNumber" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="healthpointProviderId" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="healthpointServiceType" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="healthpointGapAmount" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="healthpointPhfResponseCode" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="healthpointPhfResponseCodeDescription" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="healthpointClaimItem" typeRef="java.lang.Integer" isList="false" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.tyro.data.output.GetAllConfigurationsRtnType" supportsQuickData="false">
+            <element name="key" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="value" typeRef="java.lang.String" isList="false" allowNull="false"/>
+        </dataobject>
+        <dataobject javaType="com.tyro.data.output.GetNewTransactionRtnType" supportsQuickData="false">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="amount" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="isHealthPointClaim" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="integratedReceipt" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="cashout" typeRef="java.lang.Integer" isList="false" allowNull="true"/>
+            <element name="healthPointClaimId" typeRef="java.lang.String" isList="false" allowNull="true"/>
+        </dataobject>
+        
+       
+    </dataobjects>
+</service>

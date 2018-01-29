@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.tyro.data.Transaction" table="transaction" catalog="tyro" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="transactionId" type="integer">
+            <column name="transactionId"/>
+        </property>
+        <property name="amount" type="string">
+            <column name="amount" not-null="true"/>
+        </property>
+        <property name="isNew" type="string">
+            <column name="isNew" length="1" not-null="true"/>
+        </property>
+        <property name="isHealthPointClaim" type="string">
+            <column name="isHealthPointClaim" length="1" not-null="true"/>
+        </property>
+        <property name="integratedReceipt" type="string">
+            <column name="integratedReceipt" length="1" not-null="true"/>
+        </property>
+        <property name="cashout" type="integer">
+            <column name="cashout"/>
+        </property>
+        <property name="transactionDataId" type="integer">
+            <column name="transactionDataId"/>
+        </property>
+        <property name="healthPointClaimId" type="string">
+            <column name="healthPointClaimId"/>
+        </property>
+        <property name="user" type="string">
+            <column name="user"/>
+        </property>
+        <property name="transactionDateTime" type="string">
+            <column name="transactionDateTime"/>
+        </property>
+        <property name="status" type="string">
+            <column name="status"/>
+        </property>
+        <property name="tyroStatus" type="string">
+            <column name="tyroStatus"/>
+        </property>
+    </class>
+</hibernate-mapping>

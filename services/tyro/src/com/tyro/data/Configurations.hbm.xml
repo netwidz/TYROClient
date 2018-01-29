@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.tyro.data.Configurations" table="configurations" catalog="tyro" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="key" type="string">
+            <column name="_key"/>
+        </property>
+        <property name="value" type="string">
+            <column name="_value"/>
+        </property>
+    </class>
+</hibernate-mapping>

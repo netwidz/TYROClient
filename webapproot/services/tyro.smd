@@ -1,0 +1,68 @@
+{
+	"methods": [{
+		"name": "getAllConfigurations",
+		"operationType": "hqlquery",
+		"parameters": null,
+		"returnType": "[com.tyro.data.output.GetAllConfigurationsRtnType]"
+	}, {
+		"name": "getNewTransaction",
+		"operationType": "hqlquery",
+		"parameters": null,
+		"returnType": "[com.tyro.data.output.GetNewTransactionRtnType]"
+	}, {
+		"name": "getTransactionDataById",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "com.tyro.data.TransactionData"
+	}, {
+		"name": "updateConfigurations",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "value",
+			"type": "java.lang.String"
+		}, {
+			"name": "key",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
+		"name": "updateTransactionResult",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "status",
+			"type": "java.lang.String"
+		}, {
+			"name": "id",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "tyroStatus",
+			"type": "java.lang.String"
+		}, {
+			"name": "transactionDateTime",
+			"type": "java.lang.String"
+		}, {
+			"name": "transactionDataId",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "isNew",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
+		"name": "updateTransactionStatus",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "status",
+			"type": "java.lang.String"
+		}, {
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "java.lang.Integer"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "tyro.json"
+}
